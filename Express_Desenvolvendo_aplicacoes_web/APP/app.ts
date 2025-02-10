@@ -1,5 +1,6 @@
 import express from 'express';
 import clientsRouter from './routes/clients';
+import db from './db';
 
 const app = express();
 
@@ -9,6 +10,11 @@ app.use(clientsRouter);
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
+db.sync().then( () => {
+    console.log(`Conectado com o sucesso ao banco: ${process.env.DB_NAME}`);
+}).then( () => {
+    app.listen(port, () => {
+        console.log(`Servidor rodando na porta ${port}`);
+    });
 });
+
