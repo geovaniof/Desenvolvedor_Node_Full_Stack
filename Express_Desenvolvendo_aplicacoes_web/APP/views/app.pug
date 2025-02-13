@@ -7,10 +7,15 @@ head
 
     block titulo
 body
-    nav.navbar.navbar.bg.body.tertiary
-        div.container.fluid
-            a.navbar-brand(href="#") Clientes
-
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light 
+        .container-fluid
+            a.navbar-brand(href="/") Página Inicial
+            button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarNav.collapse.navbar-collapse
+                ul.navbar-nav
+                    li.nav-item 
+                        a.nav-link(href='/clients') Clientes
     .container
         block conteudo
 
