@@ -7,7 +7,13 @@ router.get('/', clientsController.index);
 
 router.get('/produto/:id', clientsController.produto);
 router.get('/clients', clientsController.index);
+router.get('/clients/create', clientsController.create);
+router.post('/clients', clientsController.store);
 router.get('/clients/:id', clientsController.show);
+router.put('/clients/:id', clientsController.update);
+router.get('/clients/:id/edit', clientsController.edit);
+
+
 
 
 
