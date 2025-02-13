@@ -3,6 +3,7 @@ import clientsController from '../controllers/clientController';
 
 const router = Router();
 
+router.get('/', clientsController.home);
 router.get('/', clientsController.index);
 
 router.get('/produto/:id', clientsController.produto);
@@ -12,7 +13,7 @@ router.post('/clients', clientsController.store);
 router.get('/clients/:id', clientsController.show);
 router.put('/clients/:id', clientsController.update);
 router.get('/clients/:id/edit', clientsController.edit);
-
+router.delete('/clients/:id', clientsController.destroy);
 
 
 

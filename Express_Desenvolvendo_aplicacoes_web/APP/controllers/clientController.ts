@@ -2,6 +2,10 @@ import { Request, Response } from 'express';
 import { IClientes } from '../models/clients';
 import ClientRepository from '../models/clientsModel'
 
+async function home(req: Request, res : Response, next : any){
+    res.render('home');
+}
+
 async function index(req: Request, res : Response, next : any){
     const clients = await ClientRepository.findAll();
     res.render('index', {clients: clients});
@@ -77,9 +81,24 @@ async function update(req: Request, res: Response, next:any){
 
 }
 
+async function destroy(req: Request, res: Response, next:any){
+    try{
+        await ClientRepository.destroy({
+            where:{
+                id: req.params.id
+            }
+        });
+       res.redirect('/clients');
+    } catch(error){
+        console.log(error);
+        res.status(500).end();
+    }
+
+}
+
 async function show(req: Request, res: Response, next: any){
     const client = await ClientRepository.findByPk(req.params.id);
     res.render('show', {cliente: client});
 }
 
-export default { index, produto, show, create, store, edit, update };
+export default { index, produto, show, create, store, edit, update, destroy, home };
